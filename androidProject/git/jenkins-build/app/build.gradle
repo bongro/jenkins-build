@@ -11,6 +11,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.mergedFlavor.resourceConfigurations.add("hdpi")
+        }
+    }
+
     signingConfigs {
         release {
             storeFile file("../3g.keystore")
@@ -23,11 +29,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         debug {
+            shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
