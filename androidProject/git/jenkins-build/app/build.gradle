@@ -41,6 +41,17 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    flavorDimensions("channel")
+    productFlavors {
+        "200" {
+            flavorDimensions("channel")
+        }
+
+        "999" {
+            flavorDimensions("channel")
+        }
+    }
 }
 
 dependencies {

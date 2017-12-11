@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
         }
         final int msg = appInfo.metaData.getInt("channel");
 
+        final String branch = BuildConfig.FLAVOR;
+
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, String.valueOf(msg), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, branch, Toast.LENGTH_SHORT).show();
             }
         });
     }
