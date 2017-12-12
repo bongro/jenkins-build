@@ -30,14 +30,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        final int msg = appInfo.metaData.getInt("channel");
-
-        final String branch = BuildConfig.FLAVOR;
+        final int channel = appInfo.metaData.getInt("channel");
 
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, branch, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, String.valueOf(channel), Toast.LENGTH_SHORT).show();
             }
         });
     }

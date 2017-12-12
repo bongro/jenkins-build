@@ -16,42 +16,6 @@ android {
             variant.mergedFlavor.resourceConfigurations.add("hdpi")
         }
     }
-
-    signingConfigs {
-        release {
-            storeFile file("../3g.keystore")
-            storePassword "androidheart"
-            keyAlias "androidheart"
-            keyPassword "androidheart"
-            v2SigningEnabled false
-        }
-    }
-
-    buildTypes {
-        release {
-            shrinkResources true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        debug {
-            shrinkResources false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-    }
-
-    flavorDimensions("channel")
-    productFlavors {
-        "200" {
-            flavorDimensions("channel")
-        }
-
-        "999" {
-            flavorDimensions("channel")
-        }
-    }
 }
 
 dependencies {
