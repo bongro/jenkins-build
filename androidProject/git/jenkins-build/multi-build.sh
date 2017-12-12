@@ -4,7 +4,7 @@ ROOT_PATH=$1
 APK_TEMP_DIR="temp"
 
 # 找到对应apk文件
-cd ./androidProject/git/jenkins-build/app/build/outputs/apk/release
+cd app/build/outputs/apk/release
 UNSIGNED_APK=""
 for apk in $ `ls`
 do
