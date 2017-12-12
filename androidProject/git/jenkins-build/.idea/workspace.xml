@@ -10,7 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2418abdc-358c-47cf-ab4a-dc1829d27509" name="Default" comment="提交人：bongor&#10;提交内容：随便改改">
+    <list default="true" id="2418abdc-358c-47cf-ab4a-dc1829d27509" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
@@ -2144,7 +2144,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090082861" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090104773" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2192,7 +2192,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090082861" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090104773" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2450,7 +2450,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090082863" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513090104776" />
       </method>
     </configuration>
     <list size="1">
@@ -2580,7 +2580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513086741227</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="提交人：bongor&#10;提交内容：随便改改">
+      <created>1513090100976</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1513090100976</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2625,7 +2632,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="提交人：bongor&#10;提交内容：随便改改" />
     <MESSAGE value="提交人：bongor&#10;提交内容：haha" />
     <MESSAGE value="提交人：bongor&#10;提交内容：增加渠道名" />
     <MESSAGE value="提交人：bongor&#10;提交内容：gradle 配置" />
@@ -2636,7 +2642,8 @@
     <MESSAGE value="提交人：bongor&#10;提交内容:修改脚本" />
     <MESSAGE value="提交人：bongor&#10;提交内容：脚本日志整理" />
     <MESSAGE value="提交人：bongor&#10;提交内容：修改脚本" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交人：bongor&#10;提交内容：修改脚本" />
+    <MESSAGE value="提交人：bongor&#10;提交内容：随便改改" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交人：bongor&#10;提交内容：随便改改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
