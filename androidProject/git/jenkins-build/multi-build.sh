@@ -7,13 +7,13 @@ APK_TEMP_DIR="temp"
 
 function log() {
     status=$1
-    success=$2
-    error=$3
+    successMsg=$2
+    errorMsg=$3
     if [[ ${status} -eq 0 ]]
     then
-        echo ${success}
+        echo ${successMsg}
     else
-        echo ${error}
+        echo ${errorMsg}
         exit -1
     fi
 }
@@ -24,7 +24,7 @@ function setChannel() {
     OLD_PATTERN="meta-data android:name=\"channel\".*\""
     NEW_PATTERN="meta-data android:name=\"channel\" android:value=\"${channel}\""
     # 修改对应meta-data的值
-    sed -i "" "s/${OLD_PATTERN}/${NEW_PATTERN}/" ./temp/AndroidManifest.xml
+    sed -i "" "s/${OLD_PATTERN}/${NEW_PATTERN}/" ./${APK_TEMP_DIR}/AndroidManifest.xml
     log $? "渠道号注入完毕："${channel} "渠道号注入失败"${channel}
 }
 
@@ -51,7 +51,7 @@ do
     if [[ ${apk} =~ ".apk" ]];
     then
         UNSIGNED_APK=${apk}
-        log $? "找到apk文件"${apk}
+        log $? "找到apk文件:"${apk}
         break
     fi
 done
