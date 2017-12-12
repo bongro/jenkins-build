@@ -3,6 +3,27 @@
 ROOT_PATH=$1
 APK_TEMP_DIR="temp"
 
+# 向AndroidManifest.xml文件写入channel
+function setChannel() {
+    channel=$1
+    OLD_PATTERN="meta-data android:name=\"channel\".*\""
+    NEW_PATTERN="meta-data android:name=\"channel\" android:value=\"${channel}\""
+    # 修改对应meta-data的值
+    sed -i "" "s/${OLD_PATTERN}/${NEW_PATTERN}/" ./temp/AndroidManifest.xml
+}
+
+# 打包签名
+function packageNSign() {
+    channel=$1
+    unsignedApkName=unsigned-${channel}.apk
+    # 打包
+    apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
+    # 签名
+    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./apk-release-999-signed.apk ./${UNSIGNED_APK} dog
+    # 删除未签名apk
+    rm -f ./${unsignedApkName}
+}
+
 # 找到对应apk文件
 cd app/build/outputs/apk/release
 UNSIGNED_APK=""
@@ -11,6 +32,7 @@ do
     if [[ ${apk} =~ ".apk" ]];
     then
         UNSIGNED_APK=${apk}
+        echo "找到apk文件"${apk}
         break
     fi
 done
@@ -37,24 +59,3 @@ done
 rm -rf ./${APK_TEMP_DIR}
 # 删除未签名apk
 rm -f ./${UNSIGNED_APK}
-
-# 向AndroidManifest.xml文件写入channel
-function setChannel() {
-    channel=$1
-    OLD_PATTERN="meta-data android:name=\"channel\".*\""
-    NEW_PATTERN="meta-data android:name=\"channel\" android:value=\"${channel}\""
-    # 修改对应meta-data的值
-    sed -i "" "s/${OLD_PATTERN}/${NEW_PATTERN}/" ./temp/AndroidManifest.xml
-}
-
-# 打包签名
-function packageNSign() {
-    channel=$1
-    unsignedApkName=unsigned-${channel}.apk
-    # 打包
-    apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
-    # 签名
-    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./apk-release-999-signed.apk ./${UNSIGNED_APK} dog
-    # 删除未签名apk
-    rm -f ./${unsignedApkName}
-}
