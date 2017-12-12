@@ -36,7 +36,7 @@ function packageNSign() {
     apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
     log $? ${channel}"渠道打包完毕" ${channel}"渠道打包失败"
     # 签名
-    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./apk-release-999-signed.apk ./${UNSIGNED_APK} dog
+    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./${channel}-signed.apk ./${UNSIGNED_APK} dog
     log $? ${channel}"渠道签名完毕" ${channel}"渠道签名失败"
     # 删除未签名apk
     rm -f ./${unsignedApkName}
