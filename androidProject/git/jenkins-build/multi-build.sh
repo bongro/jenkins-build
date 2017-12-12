@@ -10,6 +10,7 @@ function setChannel() {
     NEW_PATTERN="meta-data android:name=\"channel\" android:value=\"${channel}\""
     # 修改对应meta-data的值
     sed -i "" "s/${OLD_PATTERN}/${NEW_PATTERN}/" ./temp/AndroidManifest.xml
+    echo "渠道号注入完毕："${channel}
 }
 
 # 打包签名
@@ -18,10 +19,13 @@ function packageNSign() {
     unsignedApkName=unsigned-${channel}.apk
     # 打包
     apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
+    echo ${channel}"渠道打包完毕"
     # 签名
     jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./apk-release-999-signed.apk ./${UNSIGNED_APK} dog
+    echo ${channel}"渠道签名完毕"
     # 删除未签名apk
     rm -f ./${unsignedApkName}
+    echo "删除${channel}渠道临时apk"
 }
 
 # 找到对应apk文件
@@ -39,10 +43,12 @@ done
 
 # 解压apk包
 apktool d -o ./${APK_TEMP_DIR} ./${UNSIGNED_APK}
+echo ${UNSIGNED_APK}"未签名apk解压完毕"
 
 # 从AndroidManifest.xml中获取所有渠道
 CHANNELS_PATTERN='android:name="multi-channel".*'
 CHANNELS=`grep ${CHANNELS_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml | cut -d '"' -f 4`
+echo "获取所有渠道完毕："${CHANNELS}
 
 # 遍历所有渠道进行渠道设置并打包签名
 OLD_IFS="$IFS"
@@ -57,5 +63,7 @@ done
 
 # 删除解压的临时文件
 rm -rf ./${APK_TEMP_DIR}
+echo "删除临时文件夹："${APK_TEMP_DIR}
 # 删除未签名apk
 rm -f ./${UNSIGNED_APK}
+echo "删除原始未签名apk"${UNSIGNED_APK}
