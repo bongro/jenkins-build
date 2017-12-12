@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APK_PATH=$1
+APK_PRE_PATH=$1
 ROOT_PATH=$2
 APK_TEMP_DIR="temp"
 
@@ -36,7 +36,7 @@ function packageNSign() {
     apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
     log $? ${channel}"渠道打包完毕" ${channel}"渠道打包失败"
     # 签名
-    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}dog.keystore -storepass 111111 -signedjar ./${channel}-signed.apk ./${UNSIGNED_APK} dog
+    jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ${ROOT_PATH}/dog.keystore -storepass 111111 -signedjar ./${channel}-signed.apk ./${unsignedApkName} dog
     log $? ${channel}"渠道签名完毕" ${channel}"渠道签名失败"
     # 删除未签名apk
     rm -f ./${unsignedApkName}
@@ -44,14 +44,14 @@ function packageNSign() {
 }
 
 # 找到对应apk文件
-cd ${APK_PATH}
+cd ${APK_PRE_PATH}
 UNSIGNED_APK=""
 for apk in $ `ls`
 do
     if [[ ${apk} =~ ".apk" ]];
     then
         UNSIGNED_APK=${apk}
-        log $? "找到apk文件"${apk} "没有找到对应的apk文件"
+        log $? "找到apk文件"${apk}
         break
     fi
 done
