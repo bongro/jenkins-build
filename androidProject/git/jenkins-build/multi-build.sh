@@ -38,13 +38,15 @@ function getChannels() {
 function getVersionInfo() {
     VERSION_CODE_PATTERN='.*versionCode.*'
     VERSION_NAME_PATTERN='.*versionName.*'
+    echo `grep ${VERSION_CODE_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml`
+    echo `grep ${VERSION_NAME_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml`
     VERSION_CODE=`grep ${VERSION_CODE_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml | cut -d '"' -f 2`
     VERSION_NAME=`grep ${VERSION_NAME_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml | cut -d '"' -f 2`
     log $? "versionCode:${VERSION_CODE} versionName:${VERSION_NAME}" "获取版本信息异常"
 }
 
 # 遍历所有渠道进行渠道设置并打包签名
-function setChannelNSignedApk() {
+function setChannelNSignApk() {
     OLD_IFS="$IFS"
     IFS=";"
     arr=(${CHANNELS})
@@ -111,7 +113,7 @@ findUnsignedApk
 unzipUnsignedApk
 getChannels
 getVersionInfo
-setChannelNSignedApk
+setChannelNSignApk
 deleteTempFiles
 
 
