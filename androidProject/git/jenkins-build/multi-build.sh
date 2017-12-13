@@ -36,7 +36,7 @@ function getChannels() {
 
 # 获取版本信息
 function getVersionInfo() {
-    version_info=`cat ${ROOT_PATH}/version-info.txt`
+    version_info=`./gradlew printVersionInfo`
     OLD_IFS="$IFS"
     IFS=";"
     arr=(${version_info})
@@ -81,7 +81,7 @@ function setChannel() {
 function packageNSign() {
     channel=$1
     unsignedApkName="unsigned-${channel}.apk"
-    signedApkName="signed-${channel}-${VERSION_NAME}-${VERSION_CODE}.apk"
+    signedApkName="signed-${channel}-vn${VERSION_NAME}-vc${VERSION_CODE}.apk"
     # 打包
     apktool b -o ./${unsignedApkName} ./${APK_TEMP_DIR}
     log $? ${channel}"渠道打包完毕" ${channel}"渠道打包失败"
