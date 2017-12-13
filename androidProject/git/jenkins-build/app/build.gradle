@@ -15,7 +15,7 @@ android {
         if (variant.buildType.name == "release") {
             variant.mergedFlavor.resourceConfigurations.add("hdpi")
         }
-        def infoFile = new File("version-info.txt")
+        def infoFile = new File(getRootDir(), "version-info.txt")
         infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
     }
 }
