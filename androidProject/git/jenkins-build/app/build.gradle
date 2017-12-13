@@ -22,7 +22,7 @@ android {
     signingConfigs {
         release {
             storeFile file("../dog.keystore")
-            storePassword "androidheart"
+            storePassword "111111"
             keyAlias "dog"
             keyPassword "111111"
             v2SigningEnabled false
