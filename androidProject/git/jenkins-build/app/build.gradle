@@ -13,8 +13,10 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            def infoFile = new File(outputFile.getParent(), "version-info.txt")
-            infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
+            if (variant.buildType.name.equals("release")) {
+                def infoFile = new File(outputFile.getParent(), "version-info.txt")
+                infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
+            }
         }
     }
 }
