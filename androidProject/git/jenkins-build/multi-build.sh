@@ -74,7 +74,7 @@ function injectChannel() {
     channel=$1
     apk=$2
     chmod +x ${ROOT_PATH}/InjectChannel.py
-    python ${ROOT_PATH}/InjectChannel.py ${ORIGIN_APK} ${channel}
+    python ${ROOT_PATH}/InjectChannel.py ${apk} ${channel}
     log $? "渠道号注入成功："${channel} "渠道号注入失败"${channel}
 }
 
