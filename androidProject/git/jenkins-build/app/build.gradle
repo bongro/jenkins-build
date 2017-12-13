@@ -6,14 +6,15 @@ android {
         applicationId "com.jenkins.bongor.jenkinsbuild"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 666
+        versionName "6.6.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    applicationVariants.all { variant ->
-        if (variant.buildType.name == "release") {
-            variant.mergedFlavor.resourceConfigurations.add("hdpi")
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def infoFile = new File(outputFile.getParent(), "version-info.txt")
+            infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
         }
     }
 }

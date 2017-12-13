@@ -34,14 +34,23 @@ function getChannels() {
     log $? "获取所有渠道完毕："${CHANNELS} "获取渠道失败"
 }
 
-# 从AndroidManifest.xml中获取版本信息
+# 获取版本信息
 function getVersionInfo() {
-    VERSION_CODE_PATTERN='.*versionCode.*'
-    VERSION_NAME_PATTERN='.*versionName.*'
-    echo `grep ${VERSION_CODE_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml`
-    echo `grep ${VERSION_NAME_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml`
-    VERSION_CODE=`grep ${VERSION_CODE_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml | cut -d '"' -f 2`
-    VERSION_NAME=`grep ${VERSION_NAME_PATTERN} ./${APK_TEMP_DIR}/AndroidManifest.xml | cut -d '"' -f 2`
+    version_info=`cat ./version-info.txt`
+    OLD_IFS="$IFS"
+    IFS=";"
+    arr=(${version_info})
+    IFS="$OLD_IFS"
+    for info in ${arr[*]}
+    do
+        if [[ ${info} =~ "versionCode" ]];
+        then
+            VERSION_CODE=`echo ${info} | cut -d ":" -f 2`
+        elif [[ ${info} =~ "versionName" ]];
+        then
+            VERSION_NAME=`echo ${info} | cut -d ":" -f 2`
+        fi
+    done
     log $? "versionCode:${VERSION_CODE} versionName:${VERSION_NAME}" "获取版本信息异常"
 }
 
