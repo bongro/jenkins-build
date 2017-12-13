@@ -11,15 +11,15 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            if (variant.buildType.name.equals("release")) {
-                def infoFile = new File(outputFile.getParent(), "version-info.txt")
-                infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
-            }
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.mergedFlavor.resourceConfigurations.add("hdpi")
         }
+        def infoFile = new File("version-info.txt")
+        infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
     }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
