@@ -12,6 +12,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 public class ChannelUtils {
 
@@ -26,7 +27,7 @@ public class ChannelUtils {
      * @return
      */
     public static String getChannel(Context context) {
-        return getChannel(context, "200");
+        return getChannel(context, "100");
     }
 
     /**
@@ -71,6 +72,7 @@ public class ChannelUtils {
         //默认放在meta-inf/里， 所以需要再拼接一下
         String key = "META-INF/" + channelKey;
         String ret = "";
+        Log.i("ChannelUtils", "key:" + key);
         ZipFile zipfile = null;
         try {
             zipfile = new ZipFile(sourceDir);
@@ -93,12 +95,15 @@ public class ChannelUtils {
                     e.printStackTrace();
                 }
             }
+            Log.i("ChannelUtils", "文件获取异常");
         }
+        Log.i("ChannelUtils", "ret:" + ret);
         String[] split = ret.split("_");
         String channel = "";
         if (split != null && split.length >= 2) {
-            channel = ret.substring(split[0].length() + 1);
+            channel = split[split.length - 1];
         }
+        Log.i("ChannelUtils", "channel:" + channel);
         return channel;
     }
 

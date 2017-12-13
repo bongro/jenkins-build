@@ -47,7 +47,7 @@ function getVersionInfo() {
     log $? "versionCode:${VERSION_CODE} versionName:${VERSION_NAME}" "获取版本信息异常"
 }
 
-# 渠道注入
+# 生成渠道apk
 function generateChannelApk() {
     OLD_IFS="$IFS"
     IFS=";"
@@ -69,7 +69,7 @@ function copyFile() {
     log $? "文件复制成功：${newFile}" "文件复制失败"
 }
 
-# 向AndroidManifest.xml文件写入channel
+# 渠道注入
 function injectChannel() {
     channel=$1
     apk=$2
