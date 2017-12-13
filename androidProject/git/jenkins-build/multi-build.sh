@@ -36,7 +36,7 @@ function getChannels() {
 
 # 获取版本信息
 function getVersionInfo() {
-    version_info=`./gradlew printVersionInfo`
+    version_info=`cat ./version-info.txt`
     OLD_IFS="$IFS"
     IFS=";"
     arr=(${version_info})
