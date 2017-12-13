@@ -36,7 +36,7 @@ function getChannels() {
 
 # 获取版本信息
 function getVersionInfo() {
-    version_info=`cat ./version-info.txt`
+    version_info=`cat ./${ROOT_PATH}/version-info.txt`
     OLD_IFS="$IFS"
     IFS=";"
     arr=(${version_info})
