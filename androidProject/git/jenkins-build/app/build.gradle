@@ -18,6 +18,31 @@ android {
         def infoFile = new File(getRootDir(), "version-info.txt")
         infoFile.text = "versionCode:${defaultConfig.versionCode};versionName:${defaultConfig.versionName}"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../dog.keystore")
+            storePassword "androidheart"
+            keyAlias "dog"
+            keyPassword "111111"
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
 }
 
 
