@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jenkins.bongor.jenkinsbuild">
+    package="com.jenkins.bongor.jenkinsbuild"
+    android:versionCode="666"
+    android:versionName="6.6.6">
 
     <application
         android:allowBackup="true"
@@ -9,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="multi-channel" android:value="200;999"/>
-        <meta-data android:name="channel" android:value="200"/>
+        <meta-data
+            android:name="multi-channel"
+            android:value="200;999" />
+        <meta-data
+            android:name="channel"
+            android:value="200" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
