@@ -72,7 +72,6 @@ public class ChannelUtils {
         //默认放在meta-inf/里， 所以需要再拼接一下
         String key = "META-INF/" + channelKey;
         String ret = "";
-        Log.i("ChannelUtils", "key:" + key);
         ZipFile zipfile = null;
         try {
             zipfile = new ZipFile(sourceDir);
@@ -95,15 +94,12 @@ public class ChannelUtils {
                     e.printStackTrace();
                 }
             }
-            Log.i("ChannelUtils", "文件获取异常");
         }
-        Log.i("ChannelUtils", "ret:" + ret);
         String[] split = ret.split("_");
         String channel = "";
         if (split != null && split.length >= 2) {
             channel = split[split.length - 1];
         }
-        Log.i("ChannelUtils", "channel:" + channel);
         return channel;
     }
 

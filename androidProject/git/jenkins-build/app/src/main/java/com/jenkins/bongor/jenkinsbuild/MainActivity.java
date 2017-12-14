@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        long time = System.currentTimeMillis();
         final String channel = ChannelUtils.getChannel(this);
+        Log.i("MainActivity", "get channel time:" + (System.currentTimeMillis() - time));
 
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
